@@ -40,8 +40,12 @@ describe('saturdayFun', () => {
     return `This Monday, I will ${task}.`;
   }
   
-  function wrapAdjective(adjective = 'awesome', flair = '*') {
-    return function(name) {
-      return `${flair}${adjective} ${name}${flair}!`;
-    };
+  function wrapAdjective(adjective) {
+    return 'You are ' + adjective.replace(/[^\w]/g, '').trim() + '!';
   }
+
+  const highlightFunction1 = wrapAdjective('*');
+console.log(highlightFunction1("a dedicated programmer")); // Output: *a dedicated programmer*
+
+const highlightFunction2 = wrapAdjective('||');
+console.log(highlightFunction2("a dedicated programmer")); // Output: ||a dedicated programmer||
